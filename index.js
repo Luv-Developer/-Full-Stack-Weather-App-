@@ -1,6 +1,5 @@
 const express = require("express")
 const app = express()
-const port = 3000
 const {createClient} = require("@supabase/supabase-js")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
@@ -10,6 +9,7 @@ const { runInNewContext } = require("vm")
 const supabaseurl = 'https://bqpnzguzwabqkmrrijit.supabase.co'
 const supabasekey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJxcG56Z3V6d2FicWttcnJpaml0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzc3MjUxMzYsImV4cCI6MjA1MzMwMTEzNn0.l_n4gah7shANQP0WMPcZkCFkiv5LGiW1LNTValeK1ak'
 const supabase = createClient(supabaseurl,supabasekey)
+const PORT = process.env.PORT || 3000; 
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -63,6 +63,6 @@ app.post("/login",async(req,res)=>{
             res.render("weather")
         }
 })
-app.listen(port,()=>{
-    console.log(`App is listening at ${port}`)
+app.listen(PORT,()=>{
+    console.log(`App is listening at ${PORT}`)
 })
