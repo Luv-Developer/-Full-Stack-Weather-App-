@@ -63,9 +63,6 @@ app.post("/login",async(req,res)=>{
             res.render("weather")
         }
 })
-app.get("/weather",(req,res)=>{
-    res.render("weather")
-})
 app.listen(port,()=>{
     console.log(`App is listening at ${port}`)
 })
